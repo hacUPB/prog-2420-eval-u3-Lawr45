@@ -54,6 +54,41 @@ def main():
                 total += caracteristicas_especiales[tipo_carro][seleccion_especial]
         
         return total
-        
+    
+    def elegir_hora_recogida():
+        hora = input("Ingrese la hora de recogida (HH:MM, formato 24 horas): ")
+        return hora
+    
+    def procesar_compra():
+        while True:
+            tipo_carro, modelo_seleccionado = seleccionar_carro()
+            if tipo_carro and modelo_seleccionado:
+                total = modelos[tipo_carro][modelo_seleccionado]
+                total += seleccionar_caracteristicas(tipo_carro)
+                print(f"\nEl total a pagar por su {modelo_seleccionado} es: ${total}")
+    
+                hora_recogida = elegir_hora_recogida()
+                print(f"Su vehículo estará listo para recoger a las {hora_recogida}. ¡Gracias por su compra!\n")
+                
+                # Reducir el stock
+                carros[tipo_carro] -= 1
+                
+                # Verificar si aún quedan carros disponibles
+                if all(stock == 0 for stock in carros.values()):
+                    print("Todos los carros están agotados.")
+                    break
+    
+                # Preguntar si desea continuar comprando
+                continuar = input("¿Desea comprar otro carro? (s/n): ").lower()
+                if continuar != 's':
+                    break
+            else:
+                print("Operación cancelada. Intente de nuevo.")
+    
+    # Iniciar programa
+    bienvenida_usuario()
+    procesar_compra()
+    
+
 if __name__ == "__main__":
     main()

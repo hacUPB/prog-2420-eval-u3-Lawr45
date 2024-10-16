@@ -31,6 +31,29 @@ def main():
                 print("Modelo no válido. Intente de nuevo.")
                 return None, None
             return tipo_carro, modelo
-
+    
+    def seleccionar_caracteristicas(tipo_carro):
+        total = 0
+    
+        # Características Generales (pa todos)
+        print("\nSeleccione las características adicionales:")
+        for categoria, opciones in caracteristicas.items():
+            print(f"\n{categoria}:")
+            for opcion, precio in opciones.items():
+                print(f"- {opcion}: ${precio}")
+            seleccion = input(f"Seleccione {categoria}: ").title()
+            if seleccion in opciones:
+                total += opciones[seleccion]
+    
+        # Características especiales (de forma especifica)
+        if tipo_carro in caracteristicas_especiales:
+            for especial, precio in caracteristicas_especiales[tipo_carro].items():
+                print(f"\nCaracterísticas especiales: {especial} - ${precio}")
+            seleccion_especial = input("Seleccione característica especial (dejar vacío si no desea): ").title()
+            if seleccion_especial in caracteristicas_especiales[tipo_carro]:
+                total += caracteristicas_especiales[tipo_carro][seleccion_especial]
+        
+        return total
+        
 if __name__ == "__main__":
     main()

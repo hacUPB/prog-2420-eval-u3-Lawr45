@@ -39,5 +39,21 @@ Lo siguiente sera el programa preguntandole al usuario que seleccione un carro p
 Para poder seguir con los modelos de dichos carros 
 Donde podremos ver el precio de cada modelo 
 
+Se realizo y se el menu de seleccion de carros, donde el usuario dira el numero correspondiente al modelo deseado 
+y el programa lo mandara a una seccion que le mostrara los 3 tipos de carros dentro de ese segmento
+Donde el usuario tendra que escribir el nombre del modelo del carro a seleccionar 
+podiendo apreciar el valor de cada uno 
+
+Lo que hace el programa es usar la key que el usuario seleccione para poder abrir el diccionario que contiene los modelos 
+Y cada que se haga una compra se restara 1 al modelo seleccionado 
+
+En caso de no tener lo que el usuario desee se le mostrar el mensaje de:
+"Lo sentimos, no hay stock para este tipo de carro."
+
+   if carros[tipo_carro] <= 0:
+        print('Lo sentimos, no hay stock para este tipo de carro.')
+        return None, None
+
+
 
 
